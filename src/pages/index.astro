@@ -23,6 +23,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Set before first paint: the hidden, off-screen starting states below apply only when JS will move them back. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>あしやひろ | Web Application Developer / Illustrator</title>
     <meta name="description" content="あしやひろのポートフォリオ。イラストレーションとソフトウェア開発の仕事。" />
@@ -138,7 +140,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
 
   /* The hero stays pinned while the obis part; the stage's extra height is the scroll distance. */
   /* 200vh: the obis part over the first 42vh of scroll, then the whole work holds for about 58vh. */
-  .stage { position: relative; height: 200vh; }
+  .stage { position: relative; height: 100vh; }
+  .js .stage { height: 200vh; }
   /* clip, not hidden: hidden still lets focus scroll the box sideways. */
   .hero { position: sticky; top: 0; height: 100vh; overflow: clip; }
   /* .piece is the work's own box, so the title can be placed against the work's edge.
@@ -172,8 +175,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .sec-head { font-family: var(--latin), var(--ja-display); font-weight: 500; font-size: clamp(28px, 3.4vw, 48px); letter-spacing: .04em; padding: 28px var(--gutter); transition: transform .9s cubic-bezier(.16,1,.3,1); }
   .sec-ill .sec-head { background: var(--obi-ill); color: var(--on-ill); }
   .sec-eng .sec-head { background: var(--obi-eng); color: var(--on-eng); }
-  .sec-ill .sec-head:not(.in) { transform: translateX(-100%); }
-  .sec-eng .sec-head:not(.in) { transform: translateX(100%); }
+  .js .sec-ill .sec-head:not(.in) { transform: translateX(-100%); }
+  .js .sec-eng .sec-head:not(.in) { transform: translateX(100%); }
   .sec-note { padding: 8px var(--gutter); color: var(--ink-soft); }
 
   .grid { columns: 3 280px; column-gap: 24px; padding: 32px var(--gutter) 0; }
@@ -202,8 +205,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .closing-obi { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px 48px; padding: 28px var(--gutter); transition: transform .9s cubic-bezier(.16,1,.3,1); }
   .closing-a { background: var(--obi-ill); color: var(--on-ill); }
   .closing-b { background: var(--obi-eng); color: var(--on-eng); }
-  .closing-a:not(.in) { transform: translateX(-100%); }
-  .closing-b:not(.in) { transform: translateX(100%); }
+  .js .closing-a:not(.in) { transform: translateX(-100%); }
+  .js .closing-b:not(.in) { transform: translateX(100%); }
   .closing-name { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: .1em; line-height: 1.2; }
   .closing ul { list-style: none; padding: 0; display: flex; gap: 40px; }
   .closing ul a { font-family: var(--latin), var(--ja-body); font-size: 18px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
