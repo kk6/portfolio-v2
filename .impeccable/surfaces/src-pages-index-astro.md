@@ -40,6 +40,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - 横長の作品は、デスクトップでは画面いっぱい、モバイルでは切り抜かずに全体を幅に収めて帯のすぐ上に置く（決定）。
 - 外れた帯は、各セクションの見出しとして再び現れる（決定）。Illustration の帯は左から、Engineering の帯は右から戻る。
 
+## Closing (2026-10-26)
+
+- ページの並び：ヒーロー → Illustration → Engineering → プロフィール → 商業の仕事 → （即売会の参加予定がある時だけ）参加予定 → 終わりの帯 → 著作権表示。
+- 帯は「入口と出口」だけに使う。Illustration と Engineering が入口、終わりの帯が出口。プロフィール、商業の仕事、参加予定の見出しは帯にしない。
+- 終わりの帯：名前、pixiv と X（主）、Instagram と GitHub（副）、「ご依頼は X の DM へ。」。リンクはサービス名を文字で書き、アイコンだけにしない。
+- 商業の仕事：Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2 種）の写真と、pixiv のコンテストでの 2 度の入賞。販売元（Lep International）の商品写真は、許可を確認するまで使わない。
+- 未決定：終わりの帯の色（暗い色だけ／ヒーローと同じ 2 色の重ね）。
+
 ## Unresolved
 
 - ヒーローの作品：1 点固定寄りだが未確定。ランダム表示も試す。時間でランダムに切り替える案もある。
