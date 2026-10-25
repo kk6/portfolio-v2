@@ -46,7 +46,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - 帯は「入口と出口」だけに使う。Illustration と Engineering が入口、終わりの帯が出口。プロフィール、商業の仕事、参加予定の見出しは帯にしない。
 - 終わりの帯：名前、pixiv と X（主）、Instagram と GitHub（副）、「ご依頼は X の DM へ。」。リンクはサービス名を文字で書き、アイコンだけにしない。
 - 商業の仕事：Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2 種）の写真と、pixiv のコンテストでの 2 度の入賞。販売元（Lep International）の商品写真は、許可を確認するまで使わない。
-- 未決定：終わりの帯の色（暗い色だけ／ヒーローと同じ 2 色の重ね）。
+- 終わりの帯は、ヒーローと同じ 2 色を重ねる（決定）。上段は左から、下段は右から入る。
 
 ## Unresolved
 
