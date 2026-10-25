@@ -48,6 +48,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - 商業の仕事：Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2 種）の写真と、pixiv のコンテストでの 2 度の入賞。販売元（Lep International）の商品写真は、許可を確認するまで使わない。
 - 終わりの帯は、ヒーローと同じ 2 色を重ねる（決定）。上段は左から、下段は右から入る。
 
+## Gallery and framed works (2026-10-26)
+
+- 作品の背景の有無にかかわらず、ヒーローの構図は右寄せで統一し、名前は常に上の帯の中に置く。
+- 作品一覧からは、ヒーローに出ている作品を除く。各作品に作品名を添え、押すと作品だけを大きく見せるビューアを開く。モバイルは 2 列。
+- 「（準備中）」などの補足ラベルは 13px を下回らない。
+
 ## Unresolved
 
 - ヒーローの作品：1 点固定寄りだが未確定。ランダム表示も試す。時間でランダムに切り替える案もある。
