@@ -241,6 +241,14 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   }
   addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
   update();
+  // Mid-part, an obi link can take focus while it is already off-screen; scroll back so the obis return around it.
+  obis.forEach((o) =>
+    o.addEventListener('focusin', () => {
+      if (reduce.matches || scrollY === 0) return;
+      scrollTo({ top: 0, behavior: 'instant' });
+      update();
+    }),
+  );
 
   // Section headings slide in once they are a fifth into the viewport.
   const headObserver = new IntersectionObserver(

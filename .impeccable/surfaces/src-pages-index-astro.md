@@ -58,7 +58,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 Fix these while implementing, highest first:
 - [P1] Hero work identity: done in the Astro build (2026-10-26). The title appears once the obis have parted, and pressing the work opens the viewer.
-- [P1] Keyboard focus can land on obi links while they are partly parted and off-screen. Bring the obis back on focus, or make them inert as soon as they start to move.
+- [P1] Keyboard focus on partly parted obis: done in the Astro build (2026-10-26). Focus entering an obi scrolls back to the top so the obis return; fully parted obis stay inert.
 - [P2] Below the gallery, use an explicit asymmetric grid instead of a narrow text column; show the commercial photo much larger.
 - [P2] Mobile lower obi: shorten or split the subtitle so it is not four lines and does not repeat the name.
 - [P2] Add a quiet follow line (pixiv, X) right under the gallery, without an obi.
