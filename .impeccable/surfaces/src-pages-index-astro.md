@@ -64,6 +64,15 @@ Fix these while implementing, highest first:
 - [P2] Follow line: done in the Astro build (2026-10-26). 「ほかの作品は pixiv と X で。」 sits under the gallery as plain text, not an obi.
 - Keep the Engineering entrance with 「（準備中）」 until its content exists (user decision).
 
+## Next fixes (Astro critique 2026-10-26, 22/32)
+
+Scope chosen by the user: the top four, starting with the first.
+- [P1] Hero crops on portrait tablets and narrow desktop windows (43% cut at 820x1180). Keep the work whole: right-anchored with a width cap, or the centered layout below an aspect ratio of about 1.25.
+- [P2] The viewer must not show the work smaller than the hero (raise the image cap to about 90vh).
+- [P2] Strengthen the moment after the reveal: put the title at the work's edge and hold the revealed state longer.
+- [P2] Without JavaScript, the section headings and closing obis must stay visible (hide them off-screen only when JS runs).
+- Engineering: replace the dummy line with one real artefact (for example this site's repository or the obi color extractor). The user confirms the content before it ships.
+
 ## Unresolved
 
 - ヒーローの作品：1 点固定寄りだが未確定。ランダム表示も試す。時間でランダムに切り替える案もある。
