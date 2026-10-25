@@ -1,0 +1,275 @@
+---
+import { Image, getImage } from 'astro:assets';
+import '@fontsource/zen-old-mincho/500.css';
+import '@fontsource/shippori-mincho/400.css';
+import '@fontsource/spectral/400.css';
+import '@fontsource/spectral/500.css';
+import commercial from '../assets/commercial-01.jpg';
+import { works } from '../data/works.ts';
+import { textOn } from '../lib/obi-colors.ts';
+
+// shortcut: the hero is fixed to the first work; switching by time of day or season comes later.
+const hero = works[0];
+const others = works.filter((w) => w !== hero);
+const [obiIll, obiEng] = hero.obi;
+const colors = `--obi-ill:${obiIll};--obi-eng:${obiEng};--on-ill:${textOn(obiIll)};--on-eng:${textOn(obiEng)}`;
+const full = async (w: (typeof works)[number]) => (await getImage({ src: w.image, width: 1600 })).src;
+const heroFull = await full(hero);
+const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await full(w) })));
+---
+
+<!doctype html>
+<html lang="ja" style={colors}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>あしやひろ | Web Application Developer / Illustrator</title>
+    <meta name="description" content="あしやひろのポートフォリオ。イラストレーションとソフトウェア開発の仕事。" />
+  </head>
+  <body>
+    <span class="mark">ashiyahiro</span>
+    <main>
+      <section class="stage">
+        <div class="hero">
+          <a class:list={['work', { landscape: hero.landscape }]} href={heroFull} data-title={hero.title} aria-label={`「${hero.title}」を大きく見る`}>
+            <Image src={hero.image} alt={hero.alt} widths={[640, 1024, 1600]} sizes="(max-width: 767px) 100vw, 60vw" loading="eager" fetchpriority="high" />
+          </a>
+          <p class="hero-title">{hero.title}</p>
+          <div class="obi obi-ill">
+            <h1>あしや ひろ</h1>
+            <a class="door" href="#illustration">Illustration</a>
+          </div>
+          <div class="obi obi-eng">
+            <span class="sub">Ashiya Hiro / Web Application Developer, Illustrator</span>
+            <a class="door" href="#engineering">Engineering<small>（準備中）</small></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec sec-ill" id="illustration">
+        <h2 class="sec-head">Illustration</h2>
+        <div class="grid">
+          {
+            tiles.map((w) => (
+              <figure class="tile">
+                <a href={w.full} data-title={w.title}>
+                  <Image src={w.image} alt={w.alt} widths={[400, 800]} sizes="(max-width: 767px) 50vw, 30vw" />
+                </a>
+                <figcaption>{w.title}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="sec sec-eng" id="engineering">
+        <h2 class="sec-head">Engineering<small>（準備中）</small></h2>
+        <p class="sec-note">（ダミー）技術記事、OSS、開発したものをここに並べます。</p>
+      </section>
+
+      <section class="next" id="profile">
+        <h2>プロフィール</h2>
+        <p class="lead">愛媛県出身、東京都在住。都内某社でWEB開発業務に従事。本業の傍ら、イラストレーターとしても活動中。主には同人活動ですが、商業イラストの依頼も受付可能です。</p>
+        <p class="lead">仕事では主に Python と Django を使い、サーバーサイドの開発をしています。イラストはオリジナルの女子高生を中心に描き、同人誌即売会には個人サークルとして参加しています。pixiv のコンテストでは「年下彼女」をテーマにした企画で 2 度入賞しました。趣味はギターです。</p>
+      </section>
+
+      <section class="next" id="commercial">
+        <h2>商業の仕事</h2>
+        <figure class="commercial">
+          <Image src={commercial} alt="Animals Pedal の MAJOR OVER DRIVE の筐体 8 台。2 種類のイラストが、それぞれ 4 色の筐体に描かれている" widths={[720, 1440]} sizes="(max-width: 767px) 100vw, 720px" />
+          <figcaption>Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2&nbsp;種）</figcaption>
+        </figure>
+        <p class="lead">pixiv のコンテストで 2 度入賞（テーマ「年下彼女」）：pixiv Summer Girls Collection、pixiv Winter Girls Collection</p>
+      </section>
+    </main>
+
+    <footer class="closing">
+      <div class="closing-obi closing-a">
+        <p class="closing-name">あしや ひろ</p>
+        <ul>
+          <li><a class="primary" href="https://pixiv.me/ashiyahiro">pixiv</a></li>
+          <li><a class="primary" href="https://twitter.com/kk6">X</a></li>
+        </ul>
+      </div>
+      <div class="closing-obi closing-b">
+        <p class="closing-note">ご依頼は X の DM へ。</p>
+        <ul>
+          <li><a href="https://instagram.com/__kk6__">Instagram</a></li>
+          <li><a href="https://github.com/kk6">GitHub</a></li>
+        </ul>
+      </div>
+      <p class="copyright">© 2026 あしやひろ</p>
+    </footer>
+
+    <dialog class="viewer" aria-label="作品">
+      <button type="button" class="viewer-close">閉じる</button>
+      <figure><img alt="" /><figcaption></figcaption></figure>
+    </dialog>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ground: #fefefe;
+    --ink: #26282b;
+    --ink-soft: #5b5f66;
+    --ja-display: 'Zen Old Mincho', serif;
+    --ja-body: 'Shippori Mincho', serif;
+    --latin: 'Spectral', serif;
+    --gutter: clamp(16px, 6.6vw, 96px);
+    --obi-h: clamp(168px, 30vh, 280px);
+    --p: 0;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { overflow-x: clip; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--ja-body); line-height: 1.8; line-break: strict; word-break: auto-phrase; }
+  ::selection { background: var(--obi-ill); color: var(--on-ill); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+  .mark { position: absolute; top: 28px; left: var(--gutter); z-index: 3; font-family: var(--latin); font-size: 14px; letter-spacing: .08em; }
+
+  /* The hero stays pinned while the obis part; the stage's extra height is the scroll distance. */
+  .stage { position: relative; height: 160vh; }
+  /* clip, not hidden: hidden still lets focus scroll the box sideways. */
+  .hero { position: sticky; top: 0; height: 100vh; overflow: clip; }
+  .work { position: absolute; top: 0; left: 46%; height: 100vh; }
+  .work img { display: block; height: 100%; width: auto; }
+  .work.landscape { left: 0; width: 100%; }
+  .work.landscape img { width: 100%; object-fit: cover; object-position: 50% 30%; }
+  .work:focus-visible { outline-color: var(--ink); outline-offset: -6px; }
+
+  /* Shown once the obis have left, so the revealed work has a name. */
+  .hero-title { position: absolute; left: var(--gutter); bottom: 48px; z-index: 2; padding: 4px 12px; background: var(--ground); font-size: 15px; opacity: 0; transform: translateY(8px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+  .stage.revealed .hero-title { opacity: 1; transform: none; }
+
+  .obi { position: absolute; left: 0; right: 0; height: calc(var(--obi-h) * .58); display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 0 var(--gutter); }
+  .obi-ill { bottom: calc(var(--obi-h) * .58); background: var(--obi-ill); color: var(--on-ill); transform: translateX(calc(var(--p) * -100%)); }
+  .obi-eng { bottom: 0; background: var(--obi-eng); color: var(--on-eng); transform: translateX(calc(var(--p) * 100%)); }
+  .obi h1 { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: .1em; line-height: 1.2; }
+  .obi .sub { font-family: var(--latin), var(--ja-body); font-size: clamp(13px, 1.2vw, 17px); letter-spacing: .04em; }
+  .door { font-family: var(--latin), var(--ja-body); font-size: clamp(18px, 1.9vw, 28px); letter-spacing: .04em; border-bottom: 2px solid currentColor; padding-bottom: 2px; white-space: nowrap; }
+  /* max(): the label never drops below 13px, whatever size the link scales to. */
+  .door small, .sec-head small { font-size: max(13px, .45em); margin-left: .6em; font-family: var(--ja-body); white-space: nowrap; }
+
+  /* Sections: each obi returns as its section heading, entering from the side it left. */
+  .sec { padding-bottom: 96px; }
+  .sec-head { font-family: var(--latin), var(--ja-display); font-weight: 500; font-size: clamp(28px, 3.4vw, 48px); letter-spacing: .04em; padding: 28px var(--gutter); transition: transform .9s cubic-bezier(.16,1,.3,1); }
+  .sec-ill .sec-head { background: var(--obi-ill); color: var(--on-ill); }
+  .sec-eng .sec-head { background: var(--obi-eng); color: var(--on-eng); }
+  .sec-ill .sec-head:not(.in) { transform: translateX(-100%); }
+  .sec-eng .sec-head:not(.in) { transform: translateX(100%); }
+  .sec-note { padding: 8px var(--gutter); color: var(--ink-soft); }
+
+  .grid { columns: 3 280px; column-gap: 24px; padding: 32px var(--gutter) 0; }
+  .tile { break-inside: avoid; margin-bottom: 32px; }
+  .tile a { display: block; }
+  .tile img { display: block; width: 100%; height: auto; }
+  .tile figcaption { font-size: 15px; margin-top: 10px; }
+
+  .next { padding: 40px var(--gutter) 64px; max-width: 72ch; }
+  .next h2 { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: 32px; letter-spacing: .08em; margin-bottom: 16px; }
+  .lead { font-size: 17px; line-height: 2; max-width: 36em; }
+  .lead + .lead { margin-top: 1em; }
+  .commercial { margin: 8px 0 24px; max-width: 720px; }
+  .commercial img { display: block; width: 100%; height: auto; }
+  .commercial figcaption { font-size: 15px; color: var(--ink-soft); margin-top: 10px; }
+
+  /* Closing: the two hero obis return once more as a name card carrying the follow links. */
+  .closing { margin-top: 40px; }
+  .closing-obi { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px 48px; padding: 28px var(--gutter); transition: transform .9s cubic-bezier(.16,1,.3,1); }
+  .closing-a { background: var(--obi-ill); color: var(--on-ill); }
+  .closing-b { background: var(--obi-eng); color: var(--on-eng); }
+  .closing-a:not(.in) { transform: translateX(-100%); }
+  .closing-b:not(.in) { transform: translateX(100%); }
+  .closing-name { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: .1em; line-height: 1.2; }
+  .closing ul { list-style: none; padding: 0; display: flex; gap: 40px; }
+  .closing ul a { font-family: var(--latin), var(--ja-body); font-size: 18px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
+  .closing ul a.primary { font-size: clamp(22px, 2.4vw, 32px); border-bottom-width: 2px; }
+  .closing-note { font-size: 17px; }
+  .copyright { padding: 20px var(--gutter) 40px; font-size: 13px; color: var(--ink-soft); }
+
+  /* Viewer: one work at a time, nothing around it but its title. margin: auto restores the dialog centering the reset removes. */
+  .viewer { margin: auto; border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+  .viewer::backdrop { background: rgb(254 254 254 / .97); }
+  .viewer figure { display: grid; justify-items: center; gap: 14px; padding: 24px; }
+  .viewer img { max-width: min(92vw, 1200px); max-height: 82vh; width: auto; height: auto; }
+  .viewer figcaption { font-size: 16px; }
+  .viewer-close { all: unset; cursor: pointer; position: fixed; top: 20px; left: 20px; padding: 8px 14px; font-size: 15px; border-bottom: 1px solid currentColor; color: var(--ink); }
+  .viewer-close:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+  @media (max-width: 767px) {
+    .work { left: 50%; transform: translateX(-50%); top: 6vh; height: 78vh; }
+    /* Landscape works are shown whole, seated on top of the two obis. */
+    .work.landscape { left: 0; transform: none; top: auto; bottom: calc(var(--obi-h) * 1.16); height: auto; }
+    .work.landscape img { height: auto; object-fit: contain; }
+    .obi h1 { font-size: 26px; }
+    .grid { columns: 2; column-gap: 12px; }
+    .tile { margin-bottom: 20px; }
+    .tile figcaption { font-size: 13px; }
+  }
+
+  /* Reduced motion: the finished state. The obis sit under the work instead of moving. */
+  @media (prefers-reduced-motion: reduce) {
+    .stage { height: auto; }
+    .hero { position: relative; height: auto; overflow: visible; }
+    .work, .work.landscape { position: static; display: block; transform: none; height: 88vh; margin-left: 46%; width: fit-content; }
+    .work.landscape { margin-left: 0; width: 100%; height: auto; }
+    .hero-title { position: static; display: inline-block; margin: 16px var(--gutter); opacity: 1; transform: none; }
+    .obi, .sec-head, .closing-obi { position: static; transform: none !important; }
+    * { transition: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) and (max-width: 767px) {
+    .work { margin: 0 auto; }
+  }
+</style>
+
+<script>
+  const stage = document.querySelector<HTMLElement>('.stage')!;
+  const obis = stage.querySelectorAll<HTMLElement>('.obi');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Scroll progress over the stage's extra height drives --p from 0 to 1.
+  function update() {
+    if (reduce.matches) return;
+    const p = Math.min(1, Math.max(0, scrollY / ((stage.offsetHeight - innerHeight) * 0.7)));
+    stage.style.setProperty('--p', p.toFixed(4));
+    stage.classList.toggle('revealed', p >= 0.98);
+    // Once the obis have left, take their links out of the tab order; the returned headings are the entrances now.
+    obis.forEach((o) => (o.inert = p >= 0.98));
+  }
+  addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  update();
+
+  // Section headings slide in once they are a fifth into the viewport.
+  const headObserver = new IntersectionObserver(
+    (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add('in')),
+    { rootMargin: '0px 0px -20% 0px' },
+  );
+  document.querySelectorAll('.sec-head').forEach((h) => headObserver.observe(h));
+
+  // Watch the footer, not the obis: an obi parked off-screen never intersects, and the footer sits too low to rise 20% in.
+  const closing = document.querySelector<HTMLElement>('.closing')!;
+  const showClosing = () => closing.querySelectorAll('.closing-obi').forEach((o) => o.classList.add('in'));
+  new IntersectionObserver((es) => es.some((e) => e.isIntersecting) && showClosing(), { threshold: 0.3 }).observe(closing);
+  // Keyboard focus can land in an obi still parked off-screen; bring both in at once.
+  closing.addEventListener('focusin', showClosing);
+
+  // Viewer: the hero work and every tile open the work alone with its title.
+  const viewer = document.querySelector<HTMLDialogElement>('.viewer')!;
+  const viewerImg = viewer.querySelector('img')!;
+  const viewerCap = viewer.querySelector('figcaption')!;
+  viewer.querySelector('.viewer-close')!.addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', (e) => e.target === viewer && viewer.close());
+  document.querySelectorAll<HTMLAnchorElement>('a[data-title]').forEach((a) =>
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      viewerImg.src = a.href;
+      viewerImg.alt = a.querySelector('img')?.alt ?? '';
+      viewerCap.textContent = a.dataset.title ?? '';
+      viewer.setAttribute('aria-label', a.dataset.title ?? '作品');
+      viewer.showModal();
+    }),
+  );
+</script>

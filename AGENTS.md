@@ -81,3 +81,10 @@ Do not build skills merely for the sake of building skills.
 Evaluate available design-related Agent Skills and build the first browser-viewable Quiet Editorial prototype.
 
 Start with typography, layout, and Engineering/Illustration navigation. Do not attempt to finish the entire website in one pass.
+
+## Development
+
+- Dev server: `npm run dev` (Astro runs it in the background when an agent starts it; `astro dev stop` stops it).
+- Tests: `npm test` (Node's built-in test runner; tests live next to the code as `*.test.ts`).
+- Artwork in `src/assets/works/` and `src/assets/commercial-*.jpg` is git-ignored until the user decides which works to publish. The build needs those files locally.
+- Astro docs: https://docs.astro.build
