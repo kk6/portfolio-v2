@@ -3,3 +3,4 @@
 # Impeccable: per-developer overrides and local run artifacts
 .impeccable/*
 !.impeccable/config.json
+!.impeccable/surfaces/
