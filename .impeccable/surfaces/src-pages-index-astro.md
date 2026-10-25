@@ -60,7 +60,7 @@ Fix these while implementing, highest first:
 - [P1] Hero work identity: done in the Astro build (2026-10-26). The title appears once the obis have parted, and pressing the work opens the viewer.
 - [P1] Keyboard focus on partly parted obis: done in the Astro build (2026-10-26). Focus entering an obi scrolls back to the top so the obis return; fully parted obis stay inert.
 - [P2] Below the gallery: done in the Astro build (2026-10-26). A 12-column grid puts headings in a left rail (columns 1-3), text on columns 4-9, and the commercial photo on columns 4-11 (about 57% of a 1440px screen). Below 1100px the heading stacks over the content.
-- [P2] Mobile lower obi: shorten or split the subtitle so it is not four lines and does not repeat the name.
+- [P2] Obi subtitle: done in the Astro build (2026-10-26). Each obi carries its own practice's title: 「Ashiya Hiro / Illustrator」 under the name, 「Web Application Developer」 in the lower obi (user's choice). Mobile: 1 and 2 lines instead of 4.
 - [P2] Add a quiet follow line (pixiv, X) right under the gallery, without an obi.
 - Keep the Engineering entrance with 「（準備中）」 until its content exists (user decision).
 

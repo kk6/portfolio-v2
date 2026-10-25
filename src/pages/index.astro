@@ -37,11 +37,14 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
           </a>
           <p class="hero-title">{hero.title}</p>
           <div class="obi obi-ill">
-            <h1>あしや ひろ</h1>
+            <div class="who">
+              <h1>あしや ひろ</h1>
+              <span class="sub">Ashiya Hiro / Illustrator</span>
+            </div>
             <a class="door" href="#illustration">Illustration</a>
           </div>
           <div class="obi obi-eng">
-            <span class="sub">Ashiya Hiro / Web Application Developer, Illustrator</span>
+            <span class="sub">Web Application Developer</span>
             <a class="door" href="#engineering">Engineering<small>（準備中）</small></a>
           </div>
         </div>
@@ -148,7 +151,9 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .obi-ill { bottom: calc(var(--obi-h) * .58); background: var(--obi-ill); color: var(--on-ill); transform: translateX(calc(var(--p) * -100%)); }
   .obi-eng { bottom: 0; background: var(--obi-eng); color: var(--on-eng); transform: translateX(calc(var(--p) * 100%)); }
   .obi h1 { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: .1em; line-height: 1.2; }
+  /* Each obi carries the title of its own practice: Illustrator above, Web Application Developer below. */
   .obi .sub { font-family: var(--latin), var(--ja-body); font-size: clamp(13px, 1.2vw, 17px); letter-spacing: .04em; }
+  .who .sub { display: block; margin-top: 4px; }
   .door { font-family: var(--latin), var(--ja-body); font-size: clamp(18px, 1.9vw, 28px); letter-spacing: .04em; border-bottom: 2px solid currentColor; padding-bottom: 2px; white-space: nowrap; }
   /* max(): the label never drops below 13px, whatever size the link scales to. */
   .door small, .sec-head small { font-size: max(13px, .45em); margin-left: .6em; font-family: var(--ja-body); white-space: nowrap; }
