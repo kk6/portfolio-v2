@@ -64,6 +64,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
             ))
           }
         </div>
+        <p class="more">ほかの作品は <a href="https://pixiv.me/ashiyahiro">pixiv</a> と <a href="https://twitter.com/kk6">X</a> で。</p>
       </section>
 
       <section class="sec sec-eng" id="engineering">
@@ -172,6 +173,9 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .tile a { display: block; }
   .tile img { display: block; width: 100%; height: auto; }
   .tile figcaption { font-size: 15px; margin-top: 10px; }
+  /* Plain text, not an obi: obis are reserved for the entrances and the exit. */
+  .more { padding: 8px var(--gutter) 0; font-size: 17px; color: var(--ink-soft); }
+  .more a { color: var(--ink); border-bottom: 1px solid currentColor; font-family: var(--latin), var(--ja-body); }
 
   /* Below the gallery: a 12-column editorial grid. Headings sit in a left rail (columns 1-3);
      text starts on column 4 and runs six columns, while the commercial photo spans eight. */
