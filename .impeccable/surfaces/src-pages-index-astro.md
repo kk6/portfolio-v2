@@ -67,7 +67,7 @@ Fix these while implementing, highest first:
 ## Next fixes (Astro critique 2026-10-26, 22/32)
 
 Scope chosen by the user: the top four, starting with the first.
-- [P1] Hero crops on portrait tablets and narrow desktop windows (43% cut at 820x1180). Keep the work whole: right-anchored with a width cap, or the centered layout below an aspect ratio of about 1.25.
+- [P1] Hero crop on portrait screens: done (2026-10-26). Screens narrower than 5:4 use the phone layout (work centered, height capped so it never exceeds the width); wider screens keep the 46% start but slide left if the work would run off the edge. Checked at 375x812, 820x1180, 1024x1366, 1100x900, 1180x820, 1280x1000, 1440x900, for portrait and landscape works.
 - [P2] The viewer must not show the work smaller than the hero (raise the image cap to about 90vh).
 - [P2] Strengthen the moment after the reveal: put the title at the work's edge and hold the revealed state longer.
 - [P2] Without JavaScript, the section headings and closing obis must stay visible (hide them off-screen only when JS runs).

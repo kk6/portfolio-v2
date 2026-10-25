@@ -32,7 +32,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
     <main>
       <section class="stage">
         <div class="hero">
-          <a class:list={['work', { landscape: hero.landscape }]} href={heroFull} data-title={hero.title} aria-label={`「${hero.title}」を大きく見る`}>
+          <a class:list={['work', { landscape: hero.landscape }]} style={`--aspect:${hero.image.width / hero.image.height}`} href={heroFull} data-title={hero.title} aria-label={`「${hero.title}」を大きく見る`}>
             <Image src={hero.image} alt={hero.alt} widths={[640, 1024, 1600]} sizes="(max-width: 767px) 100vw, 60vw" loading="eager" fetchpriority="high" />
           </a>
           <p class="hero-title">{hero.title}</p>
@@ -138,7 +138,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .stage { position: relative; height: 160vh; }
   /* clip, not hidden: hidden still lets focus scroll the box sideways. */
   .hero { position: sticky; top: 0; height: 100vh; overflow: clip; }
-  .work { position: absolute; top: 0; left: 46%; height: 100vh; }
+  /* min(): on screens too narrow for the 46% start, slide the work left so it never runs off the right edge. */
+  .work { position: absolute; top: 0; left: min(46%, calc(100% - var(--aspect) * 100vh)); height: 100vh; }
   .work img { display: block; height: 100%; width: auto; }
   .work.landscape { left: 0; width: 100%; }
   .work.landscape img { width: 100%; object-fit: cover; object-position: 50% 30%; }
@@ -219,11 +220,16 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
     .next > .commercial { grid-column: 1 / -1; }
   }
 
-  @media (max-width: 767px) {
-    .work { left: 50%; transform: translateX(-50%); top: 6vh; height: 78vh; }
+  /* Phones and portrait screens (tablets upright, narrow windows) leave no field beside a full-height work:
+     center it, capped so its width never exceeds the screen. */
+  @media (max-width: 767px), (max-aspect-ratio: 5/4) {
+    .work { left: 50%; transform: translateX(-50%); top: 6vh; height: min(78vh, calc(100vw / var(--aspect))); }
     /* Landscape works are shown whole, seated on top of the two obis. */
     .work.landscape { left: 0; transform: none; top: auto; bottom: calc(var(--obi-h) * 1.16); height: auto; }
     .work.landscape img { height: auto; object-fit: contain; }
+  }
+
+  @media (max-width: 767px) {
     .obi h1 { font-size: 26px; }
     .next { display: block; padding-top: 48px; }
     .next > h2 { margin-bottom: 16px; }
