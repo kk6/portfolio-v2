@@ -54,6 +54,16 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - 作品一覧からは、ヒーローに出ている作品を除く。各作品に作品名を添え、押すと作品だけを大きく見せるビューアを開く。モバイルは 2 列。
 - 「（準備中）」などの補足ラベルは 13px を下回らない。
 
+## Carry-over to the Astro build (critique 2026-10-26, 23/32)
+
+Fix these while implementing, highest first:
+- [P1] Hero work identity: show the hero work's title once the obis have parted, and open the viewer when the revealed work is pressed.
+- [P1] Keyboard focus can land on obi links while they are partly parted and off-screen. Bring the obis back on focus, or make them inert as soon as they start to move.
+- [P2] Below the gallery, use an explicit asymmetric grid instead of a narrow text column; show the commercial photo much larger.
+- [P2] Mobile lower obi: shorten or split the subtitle so it is not four lines and does not repeat the name.
+- [P2] Add a quiet follow line (pixiv, X) right under the gallery, without an obi.
+- Keep the Engineering entrance with 「（準備中）」 until its content exists (user decision).
+
 ## Unresolved
 
 - ヒーローの作品：1 点固定寄りだが未確定。ランダム表示も試す。時間でランダムに切り替える案もある。
