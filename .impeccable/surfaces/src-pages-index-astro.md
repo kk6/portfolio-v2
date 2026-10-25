@@ -69,7 +69,7 @@ Fix these while implementing, highest first:
 Scope chosen by the user: the top four, starting with the first.
 - [P1] Hero crop on portrait screens: done (2026-10-26). Screens narrower than 5:4 use the phone layout (work centered, height capped so it never exceeds the width); wider screens keep the 46% start but slide left if the work would run off the edge. Checked at 375x812, 820x1180, 1024x1366, 1100x900, 1180x820, 1280x1000, 1440x900, for portrait and landscape works.
 - [P2] Viewer size: done (2026-10-26). The work fills the screen (100dvh x 100vw), with the title and close button as ground-colored plates on top; the backdrop is solid. Equal to the hero on desktop and phone, larger on portrait tablets.
-- [P2] Strengthen the moment after the reveal: put the title at the work's edge and hold the revealed state longer.
+- [P2] After the reveal: done (2026-10-26). The title (17px) sits 20px outside the work's lower-left edge on desktop, just below the work on portrait screens, and on a ground plate over full-bleed landscape works. The stage is 200vh: the obis part over 42vh of scroll and the whole work holds for about 58vh (was about 18vh).
 - [P2] Without JavaScript, the section headings and closing obis must stay visible (hide them off-screen only when JS runs).
 - Engineering: replace the dummy line with one real artefact (for example this site's repository or the obi color extractor). The user confirms the content before it ships.
 
