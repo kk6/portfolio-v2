@@ -37,6 +37,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 - スクロールに合わせて、2 本の帯が左右に分かれて外れる。
 - reduced-motion では動かさず、帯を作品の下に置いた完成状態を見せる。
+- 横長の作品は、デスクトップでは画面いっぱい、モバイルでは切り抜かずに全体を幅に収めて帯のすぐ上に置く（決定）。
 - 外れた帯は、各セクションの見出しとして再び現れる（決定）。Illustration の帯は左から、Engineering の帯は右から戻る。
 
 ## Unresolved
@@ -44,4 +45,3 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - ヒーローの作品：1 点固定寄りだが未確定。ランダム表示も試す。時間でランダムに切り替える案もある。
 - 帯の色：作品から自動で取り出した色を基本とし、気に入らない作品だけ手で上書きする（決定）。名前を載せる上の帯には、2 色のうち暗い方を置く（決定。手で上書きした色は選んだ順のまま）。
 - 和文と欧文の書体、帯の文言、サイトの言語構成。
-- 横長の作品をヒーローに置くときの配置。
