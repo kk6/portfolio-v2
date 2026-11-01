@@ -50,7 +50,7 @@ pstack等の既存Agent Skillsの利用を検討する。必要に応じて独�
 
 - デザインコンセプトとトップページの構成は決定済み。
 - Astro版のトップページは実装済み。ブランチは `feat/astro-top-page` で、まだ push していない。
-- 最新の Impeccable critique は 21/32（2026-11-01）。詳細は `.impeccable/surfaces/src-pages-index-astro.md` にある。
+- 最新の Impeccable critique は 21/32（2026-11-01、その後の修正は未評価）。詳細は `.impeccable/surfaces/src-pages-index-astro.md` にある。
 - Engineering の欄には、帯の色の抽出処理を実物として載せている。リンクは main に反映すると有効になる。
 - 作品の画像は掲載する作品が未定なので `.gitignore` で除外している。ビルドには手元の画像が必要で、clone しただけではビルドできない。
 - ファビコンは Astro の初期ファイルのまま。OGP と `site` の設定は未着手。
@@ -68,8 +68,8 @@ pstack等の既存Agent Skillsの利用を検討する。必要に応じて独�
 
 ## 次のステップ
 
-1. 最新の critique の残りの指摘（P2 と P3）を修正する。
-2. 掲載する作品とヒーローの作品を決め、画像を git に入れる。
+1. 掲載する作品とヒーローの作品を決め、画像を git に入れる。ヒーローの作品を今のまま使う場合は、右端の切れ目を直す。
+2. 修正後の状態で critique をもう一度実行する。
 3. ロゴとファビコンを決める。
 4. ドメインと共有用の画像を決め、OGP と `site` を設定する。
 5. スマートフォンの実機、Safari、Firefox で表示を確認する。

@@ -92,7 +92,7 @@ Not chosen by the user yet.
 - [P2] No hover feedback: done (2026-11-01). On hover the entrance line reaches left from its right end, a work's title gains an underline, and text links thicken their line. Lines only, under `@media (hover: hover)`. The viewer's loading state is still open.
 - [P2] Commission path: done (2026-11-01). 「X の DM」 links to the X profile from the profile section and the closing obi. A direct DM link needs an internal account ID, so it is not used. The awards appear once, in the profile (user's choice over keeping them under the commercial work).
 - [P2] Hero work's right edge reads as cut in the white margin; unneeded if the hero changes. /impeccable layout
-- [P3] Commercial photo outweighs the work. /impeccable layout
+- [P3] Commercial photo: done (2026-11-01). It shares the text columns (605px at 1440px, aligned to the text's right edge) and opens in the viewer. Below 1100px it follows the text width too.
 
 ## Unresolved
 
