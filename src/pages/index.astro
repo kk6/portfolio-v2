@@ -6,13 +6,13 @@ import '@fontsource/spectral/400.css';
 import '@fontsource/spectral/500.css';
 import commercial from '../assets/commercial-01.jpg';
 import { works } from '../data/works.ts';
-import { textOn } from '../lib/obi-colors.ts';
+import { GROUND, ON_LIGHT, textOn } from '../lib/obi-colors.ts';
 
 // shortcut: the hero is fixed to the first work; switching by time of day or season comes later.
 const hero = works[0];
 const others = works.filter((w) => w !== hero);
 const [obiIll, obiEng] = hero.obi;
-const colors = `--obi-ill:${obiIll};--obi-eng:${obiEng};--on-ill:${textOn(obiIll)};--on-eng:${textOn(obiEng)}`;
+const colors = `--ground:${GROUND};--ink:${ON_LIGHT};--obi-ill:${obiIll};--obi-eng:${obiEng};--on-ill:${textOn(obiIll)};--on-eng:${textOn(obiEng)}`;
 const full = async (src: typeof commercial) => (await getImage({ src, width: 1600 })).src;
 const heroFull = await full(hero.image);
 const commercialFull = await full(commercial);
@@ -114,6 +114,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
 
     <dialog class="viewer" aria-label="作品" tabindex="-1">
       <button type="button" class="viewer-close">閉じる</button>
+      <p class="viewer-status" role="status"></p>
       <figure><img alt="" /><figcaption></figcaption></figure>
     </dialog>
   </body>
@@ -121,8 +122,6 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
 
 <style is:global>
   :root {
-    --ground: #fefefe;
-    --ink: #26282b;
     --ink-soft: #5b5f66;
     --ja-display: 'Zen Old Mincho', serif;
     --ja-body: 'Shippori Mincho', serif;
@@ -186,7 +185,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .sec-eng .sec-head { background: var(--obi-eng); color: var(--on-eng); }
   .js .sec-ill .sec-head:not(.in) { transform: translateX(-100%); }
   .js .sec-eng .sec-head:not(.in) { transform: translateX(100%); }
-  .sec-note { padding: 8px var(--gutter); color: var(--ink-soft); }
+  .sec-note { padding: 8px var(--gutter); font-size: 17px; color: var(--ink-soft); }
+  .sec-note a { white-space: nowrap; }
 
   /* Columns, not grid rows: mixed aspect ratios would leave holes of about 285px beside the landscape works. Tab runs down each column. */
   .grid { columns: 3 280px; column-gap: 24px; padding: 32px var(--gutter) 0; }
@@ -203,7 +203,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .next { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; padding: 72px var(--gutter) 24px; }
   .next > * { grid-column: 4 / 10; }
   .next > h2 { grid-column: 1 / 4; font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: 32px; letter-spacing: .08em; line-height: 1.3; }
-  .lead { font-size: 17px; line-height: 2; }
+  .lead { font-size: 17px; line-height: 2; text-wrap: pretty; }
   .lead + .lead { margin-top: 1em; }
   .commercial { margin: 0 0 32px; }
   .commercial a { display: block; }
@@ -219,7 +219,9 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .js .closing-b:not(.in) { transform: translateX(100%); }
   .closing-name { font-family: var(--ja-display); font-feature-settings: "palt"; font-weight: 500; font-size: clamp(30px, 4.4vw, 64px); letter-spacing: .1em; line-height: 1.2; }
   .closing ul { list-style: none; padding: 0; display: flex; gap: 40px; }
-  .closing ul a { font-family: var(--latin), var(--ja-body); font-size: 18px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
+  .closing ul a { position: relative; font-family: var(--latin), var(--ja-body); font-size: 18px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
+  /* A wider touch target than the word 「X」 gives, without moving its underline. */
+  .closing ul a::after { content: ''; position: absolute; inset: -6px -14px; }
   .closing ul a.primary { font-size: clamp(22px, 2.4vw, 32px); border-bottom-width: 2px; }
   .closing-note { font-size: 17px; }
   .closing-note a { font-family: var(--latin), var(--ja-body); border-bottom: 1px solid currentColor; }
@@ -234,6 +236,10 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .viewer figcaption { position: fixed; left: 20px; bottom: 20px; padding: 4px 12px; background: var(--ground); font-size: 16px; }
   .viewer-close { all: unset; cursor: pointer; position: fixed; top: 20px; left: 20px; padding: 8px 14px; font-size: 15px; background: var(--ground); border-bottom: 1px solid currentColor; color: var(--ink); }
   .viewer-close:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  /* Delayed, so a work that loads at once never flashes the message. */
+  .viewer-status { position: fixed; top: 50%; left: 0; right: 0; text-align: center; font-size: 15px; color: var(--ink-soft); pointer-events: none; }
+  .viewer-status:not(:empty) { animation: appear .3s .4s both; }
+  @keyframes appear { from { opacity: 0; } }
 
   /* Hover: lines only, no shadow or scale. (hover: hover) keeps touch screens from holding the state after a tap. */
   @media (hover: hover) {
@@ -277,6 +283,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
     .hero-title { opacity: 1; transform: none; }
     .obi, .sec-head, .closing-obi { position: static; transform: none !important; }
     * { transition: none !important; }
+    .viewer-status:not(:empty) { animation: none; }
   }
   @media (prefers-reduced-motion: reduce) and (max-width: 767px) {
     .piece { margin: 0 auto; height: auto; }
@@ -347,12 +354,16 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   const viewer = document.querySelector<HTMLDialogElement>('.viewer')!;
   const viewerImg = viewer.querySelector('img')!;
   const viewerCap = viewer.querySelector('figcaption')!;
+  const viewerStatus = viewer.querySelector('.viewer-status')!;
+  viewerImg.addEventListener('load', () => (viewerStatus.textContent = ''));
+  viewerImg.addEventListener('error', () => (viewerStatus.textContent = '画像を読み込めませんでした。'));
   viewer.querySelector('.viewer-close')!.addEventListener('click', () => viewer.close());
   viewer.addEventListener('click', (e) => e.target === viewer && viewer.close());
   document.querySelectorAll<HTMLAnchorElement>('a[data-title]').forEach((a) =>
     a.addEventListener('click', (e) => {
       e.preventDefault();
       viewerImg.removeAttribute('src'); // the previous work must not show under the new title while this one loads
+      viewerStatus.textContent = '読み込み中…';
       viewerImg.src = a.href;
       viewerImg.alt = a.querySelector('img')?.alt ?? '';
       viewerCap.textContent = a.dataset.title ?? '';

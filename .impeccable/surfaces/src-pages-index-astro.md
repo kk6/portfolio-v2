@@ -83,7 +83,12 @@ Scope chosen by the user: the top four, starting with the first.
 - Mouse clicks on a partly parted obi: done. The return to the top runs for keyboard focus only.
 - Phone address bar: done, checked in Safari on the iPhone 17 simulator (iOS 27.0, 2026-11-01), not yet on a real phone. Tapping an entrance, the viewer, and the scroll reveal also work there. Opening the viewer by tap or mouse focuses the dialog itself, so the close button shows no outline; opening it by keyboard keeps focus and the outline on the close button. The hero uses dvh so the obis stay on the visible bottom edge; the work uses svh so it does not rescale.
 - Viewer: done. The previous work no longer shows under a new title while the next one loads.
-- Open: own favicon (still Astro's, waits on the logo decision), OGP and `site` (wait on the domain and a share image), artwork in git (waits on the selection), font CSS at 122KB gzipped, ground and ink colors defined in both the CSS and `obi-colors.ts`.
+- Viewer states: done (2026-11-01). A status line reads 「読み込み中…」 after a 0.4s delay and names a failed load; the work's title stays.
+- Font CSS: 122KB to 68KB gzipped by no longer inlining small font files. The rest is 254 font-face rules for the Japanese subsets.
+- Ground and ink colors: defined once in `obi-colors.ts` and passed to the CSS.
+- Smaller fixes: `.sec-note` matches the 17px text, `obi-colors.ts` no longer wraps at its hyphen, closing links have a touch target of about 53x61px for X, and `.lead` uses `text-wrap: pretty`.
+- Safari has no `word-break: auto-phrase`, so Japanese lines there can break inside a word (「イ/ラストレーター」). Chrome keeps phrases whole. Not fixed; decide with the type choices.
+- Open: own favicon (still Astro's, waits on the logo decision), OGP and `site` (wait on the domain and a share image), artwork in git (waits on the selection).
 
 ## Next fixes (Astro critique 2026-11-01, 21/32)
 
