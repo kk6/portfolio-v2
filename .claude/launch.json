@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "astro-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "ASTRO_DEV_BACKGROUND=0 npx astro dev --port 4321 --host 127.0.0.1"],
+      "port": 4321
+    },
+    {
+      "name": "obi-prototype",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4400", "--bind", "127.0.0.1", "--directory", ".impeccable/mocks/proto"],
+      "port": 4400
+    }
+  ]
+}

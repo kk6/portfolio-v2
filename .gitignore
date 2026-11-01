@@ -1,2 +1,21 @@
 .DS_Store
 
+# Impeccable: per-developer overrides and local run artifacts
+.impeccable/*
+!.impeccable/config.json
+!.impeccable/surfaces/
+
+# Astro
+dist/
+.astro/
+node_modules/
+npm-debug.log*
+.env
+.env.production
+
+# Artwork: which works to publish is not decided yet, so keep them out of git for now
+src/assets/works/
+src/assets/commercial-*.jpg
+
+# The global gitignore ignores lib/; this project keeps source there.
+!src/lib/
