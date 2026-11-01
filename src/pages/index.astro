@@ -112,7 +112,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
       <p class="copyright">© 2026 あしやひろ</p>
     </footer>
 
-    <dialog class="viewer" aria-label="作品">
+    <dialog class="viewer" aria-label="作品" tabindex="-1">
       <button type="button" class="viewer-close">閉じる</button>
       <figure><img alt="" /><figcaption></figcaption></figure>
     </dialog>
@@ -226,7 +226,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .copyright { padding: 20px var(--gutter) 40px; font-size: 13px; color: var(--ink-soft); }
 
   /* Viewer: one work at a time, nothing around it but its title. margin: auto restores the dialog centering the reset removes. */
-  .viewer { margin: auto; border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100dvh; }
+  .viewer { margin: auto; border: 0; padding: 0; outline: 0; background: transparent; max-width: 100vw; max-height: 100dvh; }
   /* Solid ground: a translucent one let the obis and tiles show through behind the work. */
   .viewer::backdrop { background: var(--ground); }
   /* The work fills the screen, so 「大きく見る」 is never smaller than the hero; title and close sit on it as plates. */
@@ -358,6 +358,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
       viewerCap.textContent = a.dataset.title ?? '';
       viewer.setAttribute('aria-label', a.dataset.title ?? '作品');
       viewer.showModal();
+      // detail is 0 for keyboard clicks: those keep focus on the close button, with its ring.
+      if (e.detail) viewer.focus();
     }),
   );
 </script>

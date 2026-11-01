@@ -81,7 +81,7 @@ Scope chosen by the user: the top four, starting with the first.
 ## Audit fixes (ponytail-audit 2026-11-01)
 
 - Mouse clicks on a partly parted obi: done. The return to the top runs for keyboard focus only.
-- Phone address bar: done, not yet checked on a real phone. The hero uses dvh so the obis stay on the visible bottom edge; the work uses svh so it does not rescale.
+- Phone address bar: done, checked in Safari on the iPhone 17 simulator (iOS 27.0, 2026-11-01), not yet on a real phone. Tapping an entrance, the viewer, and the scroll reveal also work there. Opening the viewer by tap or mouse focuses the dialog itself, so the close button shows no outline; opening it by keyboard keeps focus and the outline on the close button. The hero uses dvh so the obis stay on the visible bottom edge; the work uses svh so it does not rescale.
 - Viewer: done. The previous work no longer shows under a new title while the next one loads.
 - Open: own favicon (still Astro's, waits on the logo decision), OGP and `site` (wait on the domain and a share image), artwork in git (waits on the selection), font CSS at 122KB gzipped, ground and ink colors defined in both the CSS and `obi-colors.ts`.
 
