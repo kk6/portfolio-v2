@@ -1,6 +1,6 @@
 # Design Brief — Quiet Editorial
 
-Status: Direction approved / Top page structure approved / Prototype in progress
+Status: Direction approved / Top page structure approved / Astro top page built, in review
 
 ## 1. Design Vision
 

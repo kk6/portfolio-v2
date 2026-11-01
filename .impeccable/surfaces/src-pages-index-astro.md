@@ -17,7 +17,7 @@ related_targets: []
 
 - イラストの依頼者、作品のファン、エンジニア仲間。
 - 作品をじっくり見てもらい、SNS や pixiv のフォローにつなげる。
-- 素材：作品（現在は仮置き 1 点）、旧サイトのプロフィール。Engineering 側はダミーと明記する。
+- 素材：作品（現在は仮置き 1 点）、旧サイトのプロフィール。Engineering 側は帯の色の抽出処理を実物として載せる。
 
 ## Direction contract
 
@@ -71,7 +71,28 @@ Scope chosen by the user: the top four, starting with the first.
 - [P2] Viewer size: done (2026-10-26). The work fills the screen (100dvh x 100vw), with the title and close button as ground-colored plates on top; the backdrop is solid. Equal to the hero on desktop and phone, larger on portrait tablets.
 - [P2] After the reveal: done (2026-10-26). The title (17px) sits 20px outside the work's lower-left edge on desktop, just below the work on portrait screens, and on a ground plate over full-bleed landscape works. The stage is 200vh: the obis part over 42vh of scroll and the whole work holds for about 58vh (was about 18vh).
 - [P2] No-JS: done (2026-10-26). An inline script adds a js class to <html> before first paint; the off-screen starting states and the 200vh stage apply only under it. Without JS the headings and closing obis are visible and the stage is 100vh. The hero title stays hidden without JS (the obis never part); the work link's label still names it.
-- Engineering: replace the dummy line with one real artefact (for example this site's repository or the obi color extractor). The user confirms the content before it ships.
+- Engineering: done (2026-11-01). The dummy line is replaced with the obi color extractor, linked to `src/lib/obi-colors.ts` on main (user's choice over Wordtrail, mcpax, and Minerva). The sentence holds only while the hero work uses extracted colors; a hand-picked hero needs new wording. The link works once this branch reaches main.
+
+- [P3] Gallery tab order: kept as is (2026-11-01). Tab runs down each column and focus stays visible across the jump to the next column. Rows with one height per row would match the tab order but leave holes of about 285px beside the landscape works at 1440px. The uneven column end depends on which works are published, so revisit it with the selection.
+
+- Reduced motion: checked and fixed (2026-11-01) in headless Chrome with the emulated media feature, at 1440x900, 820x1180, and 375x812, for portrait and landscape heroes. Fixed the 200vh stage staying under JS (695-997px blank), the title landing on the obi on portrait screens, and landscape works pushed up to 325px off the top.
+
+
+## Audit fixes (ponytail-audit 2026-11-01)
+
+- Mouse clicks on a partly parted obi: done. The return to the top runs for keyboard focus only.
+- Phone address bar: done, not yet checked on a real phone. The hero uses dvh so the obis stay on the visible bottom edge; the work uses svh so it does not rescale.
+- Viewer: done. The previous work no longer shows under a new title while the next one loads.
+- Open: own favicon (still Astro's, waits on the logo decision), OGP and `site` (wait on the domain and a share image), artwork in git (waits on the selection), font CSS at 122KB gzipped, ground and ink colors defined in both the CSS and `obi-colors.ts`.
+
+## Next fixes (Astro critique 2026-11-01, 21/32)
+
+Not chosen by the user yet.
+- [P1] Entrance links skip the signature and the hero work. /impeccable animate
+- [P2] No hover feedback; works do not look openable. /impeccable delight
+- [P2] Commission path breaks: no link from 「受付可能」 or 「X の DM」; awards appear twice. /impeccable clarify
+- [P2] Hero work's right edge reads as cut in the white margin; unneeded if the hero changes. /impeccable layout
+- [P3] Commercial photo outweighs the work. /impeccable layout
 
 ## Unresolved
 

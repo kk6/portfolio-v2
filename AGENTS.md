@@ -78,9 +78,9 @@ Do not build skills merely for the sake of building skills.
 
 ## Current Next Step
 
-Evaluate available design-related Agent Skills and build the first browser-viewable Quiet Editorial prototype.
+The Astro top page is built. Work through the latest fixes in `.impeccable/surfaces/src-pages-index-astro.md`, and see "次のステップ" in `README.md` for what follows them.
 
-Start with typography, layout, and Engineering/Illustration navigation. Do not attempt to finish the entire website in one pass.
+Do not attempt to finish the entire website in one pass.
 
 ## Development
 
