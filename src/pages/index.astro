@@ -78,8 +78,8 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
 
       <section class="next" id="profile">
         <h2>プロフィール</h2>
-        <p class="lead">愛媛県出身、東京都在住。都内某社でWEB開発業務に従事。本業の傍ら、イラストレーターとしても活動中。主には同人活動ですが、商業イラストの依頼も受付可能です。</p>
-        <p class="lead">仕事では主に Python と Django を使い、サーバーサイドの開発をしています。イラストはオリジナルの女子高生を中心に描き、同人誌即売会には個人サークルとして参加しています。pixiv のコンテストでは「年下彼女」をテーマにした企画で 2 度入賞しました。趣味はギターです。</p>
+        <p class="lead">愛媛県出身、東京都在住。都内某社でWEB開発業務に従事。本業の傍ら、イラストレーターとしても活動中。主には同人活動ですが、商業イラストの依頼も受付可能です。ご依頼は <a href="https://twitter.com/kk6">X の DM</a> へ。</p>
+        <p class="lead">仕事では主に Python と Django を使い、サーバーサイドの開発をしています。イラストはオリジナルの女子高生を中心に描き、同人誌即売会には個人サークルとして参加しています。pixiv のコンテストでは「年下彼女」をテーマにした企画で 2 度入賞しました（pixiv Summer Girls Collection、pixiv Winter Girls Collection）。趣味はギターです。</p>
       </section>
 
       <section class="next" id="commercial">
@@ -88,7 +88,6 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
           <Image src={commercial} alt="Animals Pedal の MAJOR OVER DRIVE の筐体 8 台。2 種類のイラストが、それぞれ 4 色の筐体に描かれている" widths={[720, 1080, 1600]} sizes="(max-width: 1100px) 100vw, 58vw" />
           <figcaption>Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2&nbsp;種）</figcaption>
         </figure>
-        <p class="lead">pixiv のコンテストで 2 度入賞（テーマ「年下彼女」）：pixiv Summer Girls Collection、pixiv Winter Girls Collection</p>
       </section>
     </main>
 
@@ -101,7 +100,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
         </ul>
       </div>
       <div class="closing-obi closing-b">
-        <p class="closing-note">ご依頼は X の DM へ。</p>
+        <p class="closing-note">ご依頼は <a href="https://twitter.com/kk6">X の DM</a> へ。</p>
         <ul>
           <li><a href="https://instagram.com/__kk6__">Instagram</a></li>
           <li><a href="https://github.com/kk6">GitHub</a></li>
@@ -194,7 +193,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .tile figcaption { font-size: 15px; margin-top: 10px; }
   /* Plain text, not an obi: obis are reserved for the entrances and the exit. */
   .more { padding: 8px var(--gutter) 0; font-size: 17px; color: var(--ink-soft); }
-  .more a, .sec-note a { color: var(--ink); border-bottom: 1px solid currentColor; font-family: var(--latin), var(--ja-body); }
+  .more a, .sec-note a, .lead a { color: var(--ink); border-bottom: 1px solid currentColor; font-family: var(--latin), var(--ja-body); }
 
   /* Below the gallery: a 12-column editorial grid. Headings sit in a left rail (columns 1-3);
      text starts on column 4 and runs six columns, while the commercial photo spans eight. */
@@ -220,6 +219,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   .closing ul a { font-family: var(--latin), var(--ja-body); font-size: 18px; letter-spacing: .04em; border-bottom: 1px solid currentColor; }
   .closing ul a.primary { font-size: clamp(22px, 2.4vw, 32px); border-bottom-width: 2px; }
   .closing-note { font-size: 17px; }
+  .closing-note a { font-family: var(--latin), var(--ja-body); border-bottom: 1px solid currentColor; }
   .copyright { padding: 20px var(--gutter) 40px; font-size: 13px; color: var(--ink-soft); }
 
   /* Viewer: one work at a time, nothing around it but its title. margin: auto restores the dialog centering the reset removes. */
@@ -236,7 +236,7 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   @media (hover: hover) {
     .door:hover::after { transform: scaleX(1.18); }
     .tile a:hover + figcaption, .stage.revealed .work:hover + .hero-title { text-decoration: underline; text-underline-offset: .3em; text-decoration-thickness: 1px; }
-    .more a:hover, .sec-note a:hover, .closing ul a:hover { box-shadow: 0 1px currentColor; }
+    .more a:hover, .sec-note a:hover, .lead a:hover, .closing ul a:hover, .closing-note a:hover { box-shadow: 0 1px currentColor; }
   }
 
   /* Below 1100px the three-column rail is too narrow for a 32px heading: stack the heading over the content. */

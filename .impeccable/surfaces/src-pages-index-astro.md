@@ -45,7 +45,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - ページの並び：ヒーロー → Illustration → Engineering → プロフィール → 商業の仕事 → （即売会の参加予定がある時だけ）参加予定 → 終わりの帯 → 著作権表示。
 - 帯は「入口と出口」だけに使う。Illustration と Engineering が入口、終わりの帯が出口。プロフィール、商業の仕事、参加予定の見出しは帯にしない。
 - 終わりの帯：名前、pixiv と X（主）、Instagram と GitHub（副）、「ご依頼は X の DM へ。」。リンクはサービス名を文字で書き、アイコンだけにしない。
-- 商業の仕事：Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2 種）の写真と、pixiv のコンテストでの 2 度の入賞。販売元（Lep International）の商品写真は、許可を確認するまで使わない。
+- 商業の仕事：Animals Pedal「MAJOR OVER DRIVE」筐体イラスト（2 種）の写真。pixiv のコンテストでの 2 度の入賞はプロフィールに置く（2026-11-01 変更）。販売元（Lep International）の商品写真は、許可を確認するまで使わない。
 - 終わりの帯は、ヒーローと同じ 2 色を重ねる（決定）。上段は左から、下段は右から入る。
 
 ## Gallery and framed works (2026-10-26)
@@ -90,7 +90,7 @@ Scope chosen by the user: the top four, starting with the first.
 Not chosen by the user yet.
 - [P1] Entrance links skip the signature and the hero work: done (2026-11-01). An entrance parts the obis in about 0.4s, holds the whole work for about 1s, then scrolls to its section, about 2.3s in all at 1440px. Scrolling during the hold cancels the move. With reduced motion the link jumps at once. Smooth scrolling alone showed the whole work for only a moment.
 - [P2] No hover feedback: done (2026-11-01). On hover the entrance line reaches left from its right end, a work's title gains an underline, and text links thicken their line. Lines only, under `@media (hover: hover)`. The viewer's loading state is still open.
-- [P2] Commission path breaks: no link from 「受付可能」 or 「X の DM」; awards appear twice. /impeccable clarify
+- [P2] Commission path: done (2026-11-01). 「X の DM」 links to the X profile from the profile section and the closing obi. A direct DM link needs an internal account ID, so it is not used. The awards appear once, in the profile (user's choice over keeping them under the commercial work).
 - [P2] Hero work's right edge reads as cut in the white margin; unneeded if the hero changes. /impeccable layout
 - [P3] Commercial photo outweighs the work. /impeccable layout
 
