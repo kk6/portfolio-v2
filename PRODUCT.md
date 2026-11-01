@@ -52,7 +52,7 @@ From the current site `ashiyahiro.art`, which the user approved for reuse:
 - **Awards:** two pixiv contest prizes under the "年下彼女" theme (pixiv Summer Girls Collection and pixiv Winter Girls Collection).
 - **Commercial work:** enclosure illustrations for the Animals Pedal Major Overdrive, in two designs ("ボブカット" and "Alice").
 - **Illustrations:** 16 works listed at `/illustration`, including 雪化粧, 横顔, ポニテを結う, アンニュイな朝, and the cover of the C94 book "Schoolgirlish Graffiti". Most are portrait-format. The image files have not been retrieved yet.
-- **Links:** X https://twitter.com/kk6, pixiv https://pixiv.me/ashiyahiro, GitHub https://github.com/kk6, Instagram https://instagram.com/__kk6__.
+- **Links:** X https://x.com/kk6, pixiv https://pixiv.me/ashiyahiro, GitHub https://github.com/kk6, Instagram https://instagram.com/__kk6__.
 
 **Absent, do not fabricate:** a list of engineering projects, OSS highlights, articles, client testimonials, or any metrics.
 
