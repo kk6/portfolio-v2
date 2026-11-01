@@ -88,7 +88,7 @@ Scope chosen by the user: the top four, starting with the first.
 ## Next fixes (Astro critique 2026-11-01, 21/32)
 
 Not chosen by the user yet.
-- [P1] Entrance links skip the signature and the hero work. /impeccable animate
+- [P1] Entrance links skip the signature and the hero work: done (2026-11-01). An entrance parts the obis in about 0.4s, holds the whole work for about 1s, then scrolls to its section, about 2.3s in all at 1440px. Scrolling during the hold cancels the move. With reduced motion the link jumps at once. Smooth scrolling alone showed the whole work for only a moment.
 - [P2] No hover feedback; works do not look openable. /impeccable delight
 - [P2] Commission path breaks: no link from 「受付可能」 or 「X の DM」; awards appear twice. /impeccable clarify
 - [P2] Hero work's right edge reads as cut in the white margin; unneeded if the hero changes. /impeccable layout

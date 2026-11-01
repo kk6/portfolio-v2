@@ -131,6 +131,9 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   }
   * { box-sizing: border-box; margin: 0; }
   html, body { overflow-x: clip; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
   body { background: var(--ground); color: var(--ink); font-family: var(--ja-body); line-height: 1.8; line-break: strict; word-break: auto-phrase; }
   ::selection { background: var(--obi-ill); color: var(--on-ill); }
   a { color: inherit; text-decoration: none; }
@@ -279,10 +282,12 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
   const obis = stage.querySelectorAll<HTMLElement>('.obi');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
 
+  const revealAt = () => innerHeight * 0.42;
+
   // Scroll progress over the stage's extra height drives --p from 0 to 1.
   function update() {
     if (reduce.matches) return;
-    const p = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.42)));
+    const p = Math.min(1, Math.max(0, scrollY / revealAt()));
     stage.style.setProperty('--p', p.toFixed(4));
     stage.classList.toggle('revealed', p >= 0.98);
     // Once the obis have left, take their links out of the tab order; the returned headings are the entrances now.
@@ -297,6 +302,19 @@ const tiles = await Promise.all(others.map(async (w) => ({ ...w, full: await ful
       if (reduce.matches || scrollY === 0 || !(e.target as HTMLElement).matches(':focus-visible')) return;
       scrollTo({ top: 0, behavior: 'instant' });
       update();
+    }),
+  );
+
+  // The gallery leaves the hero out, so an entrance parts the obis and holds the whole work before moving on.
+  stage.querySelectorAll<HTMLAnchorElement>('.door').forEach((a) =>
+    a.addEventListener('click', (e) => {
+      if (reduce.matches || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      scrollTo({ top: revealAt() });
+      // href, not hash: setting an unchanged hash does nothing, and a return visit to the entrance must still move.
+      const go = setTimeout(() => (location.href = a.href), 1400);
+      // The visitor's own scroll wins over the hold.
+      for (const type of ['wheel', 'touchmove']) addEventListener(type, () => clearTimeout(go), { once: true, passive: true });
     }),
   );
 
