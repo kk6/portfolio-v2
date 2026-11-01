@@ -12,8 +12,8 @@ type WorkEntry = {
 };
 
 const entries: WorkEntry[] = [
-  { file: 'work-01.webp', title: '凪にほどける', alt: '膝を抱えて座る、白い髪の少女のイラスト' },
-  { file: 'work-02.webp', title: 'Peace!!', alt: 'ギターを抱えてピースサインをする、ポニーテールの少女のイラスト' },
+  // shortcut: an unfinished work under the previous hero's title; replace the file, same aspect ratio, when it is done.
+  { file: 'hero.webp', title: '凪にほどける', alt: '膝を抱えて座る、白い髪の少女のイラスト' },
   { file: 'work-03.webp', title: '夏', alt: '両腕を広げて笑う、ツインテールの少女のイラスト' },
   { file: 'work-04.webp', title: 'アンニュイな朝', alt: '窓辺でカップを手にくつろぐ、黒髪の少女のイラスト' },
   { file: 'work-05.png', title: '「ちょっと待っててね」', alt: '教室で髪を結ぶ、セーラー服の少女のイラスト' },

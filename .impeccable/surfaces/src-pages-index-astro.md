@@ -91,7 +91,7 @@ Not chosen by the user yet.
 - [P1] Entrance links skip the signature and the hero work: done (2026-11-01). An entrance parts the obis in about 0.4s, holds the whole work for about 1s, then scrolls to its section, about 2.3s in all at 1440px. Scrolling during the hold cancels the move. With reduced motion the link jumps at once. Smooth scrolling alone showed the whole work for only a moment.
 - [P2] No hover feedback: done (2026-11-01). On hover the entrance line reaches left from its right end, a work's title gains an underline, and text links thicken their line. Lines only, under `@media (hover: hover)`. The viewer's loading state is still open.
 - [P2] Commission path: done (2026-11-01). 「X の DM」 links to the X profile from the profile section and the closing obi. A direct DM link needs an internal account ID, so it is not used. The awards appear once, in the profile (user's choice over keeping them under the commercial work).
-- [P2] Hero work's right edge reads as cut in the white margin; unneeded if the hero changes. /impeccable layout
+- [P2] Hero work's right edge: resolved by the new hero (2026-11-01). `src/assets/works/hero.webp` is an unfinished work at 3:4 with nothing touching its edges; the finished file replaces it at the same aspect ratio. Its title is the previous hero's, kept until the user names it. Peace!! left the gallery with the old hero.
 - [P3] Commercial photo: done (2026-11-01). It shares the text columns (605px at 1440px, aligned to the text's right edge) and opens in the viewer. Below 1100px it follows the text width too.
 
 ## Unresolved
